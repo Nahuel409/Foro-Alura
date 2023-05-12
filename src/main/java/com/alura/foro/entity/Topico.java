@@ -1,33 +1,35 @@
 package com.alura.foro.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
+
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Topico {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
     @Column(unique = true)
-    @NotNull
+    @NotBlank
     private String titulo;
     @Column(unique = true)
-    @NotNull
+    @NotBlank
     private String mensaje;
-    @NotNull
+    @NotBlank
+    private String autor;
+    @NotBlank
     private String curso;
+    @NotNull
+    private Estado estado;
 
 
-    public Topico() {
-    }
-
-    public Topico(String titulo, String mensaje, String curso) {
-        this.titulo = titulo;
-        this.mensaje = mensaje;
-        this.curso = curso;
-    }
 }

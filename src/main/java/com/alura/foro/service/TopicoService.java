@@ -3,7 +3,9 @@ package com.alura.foro.service;
 import com.alura.foro.entity.Topico;
 import com.alura.foro.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -32,7 +34,7 @@ public class TopicoService {
             topicoEditado.setCurso(topico.getCurso());
                 return topicoRepository.save(topicoEditado);
         }else{
-            throw new RuntimeException("El topico con ID "+ id +" no existe");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El topico con ID "+ id +" no existe");
         }
     }
 
@@ -40,7 +42,7 @@ public class TopicoService {
     public void eliminarTopico(Long id){
         Optional<Topico> existe = topicoRepository.findById(id);
         if(existe.isEmpty()){
-            throw new IllegalArgumentException("no existe un topico con ID "+id);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El topico con ID "+ id +" no existe");
         }else{
             topicoRepository.deleteById(id);
         }
