@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
+
 
 @Getter
 @Setter
@@ -26,10 +29,12 @@ public class Topico {
     private String mensaje;
     @NotBlank
     private String autor;
+    private LocalDateTime fecha = LocalDateTime.now();
     @NotBlank
     private String curso;
     @NotNull
     private Estado estado;
+
 
 
 }
