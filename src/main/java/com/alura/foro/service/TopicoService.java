@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 public class TopicoService {
     @Autowired
-    TopicoRepository topicoRepository;
+    private TopicoRepository topicoRepository;
 
     public List<Topico> verTopicos(){
        return topicoRepository.findAll();

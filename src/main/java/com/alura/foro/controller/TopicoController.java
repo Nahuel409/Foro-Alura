@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/topicos")
 public class TopicoController {
     @Autowired
-    TopicoService topicoService;
+    private TopicoService topicoService;
 
     @GetMapping
     public List<Topico> verTopicos(){
